@@ -14,3 +14,7 @@ sed -i 's/192.168.1.1/192.168.5.2/g' package/base-files/files/bin/config_generat
 
 # 修改 argon 为默认主题,可根据你喜欢的修改成其他的（不选择那些会自动改变为默认主题的主题才有效果）
 sed -i 's/luci-theme-bootstrap/luci-theme-argonv3/g' feeds/luci/collections/luci/Makefile
+
+# Add build date to index page
+export orig_version="$(cat "/etc/openwrt_release" | grep DISTRIB_DESCRIPTION | awk -F "'" '{print $2}')"
+sed -i "s/${orig_version}/${orig_version} ($(date +"%Y-%m-%d"))/g" /etc/openwrt_release
