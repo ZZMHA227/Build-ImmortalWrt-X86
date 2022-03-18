@@ -16,10 +16,10 @@ sed -i 's/192.168.1.1/192.168.5.2/g' package/base-files/files/bin/config_generat
 sed -i 's/luci-theme-bootstrap/luci-theme-argonv3/g' feeds/luci/collections/luci/Makefile
 
 # Add date version
-#export DATE_VERSION=$(date -d "$(rdate -n -4 -p pool.ntp.org)" +'%Y-%m-%d')
-#sed -i "s/%C/%C (${DATE_VERSION})/g" package/base-files/files/etc/openwrt_release
+export DATE_VERSION=$(date -d "$(rdate -n -4 -p pool.ntp.org)" +'%Y-%m-%d')
+sed -i "s/%C/%C (${DATE_VERSION})/g" package/base-files/files/etc/openwrt_release
 
 # Rename hostname to OpenWrt
-#pushd package/base-files/files/bin
-#sed -i 's/ImmortalWrt/OpenWrt/g' config_generate
-#popd
+pushd package/base-files/files/bin
+sed -i 's/ImmortalWrt/OpenWrt/g' config_generate
+popd
